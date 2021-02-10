@@ -1,9 +1,33 @@
 #include <Servo.h>
 
-#define ledPin 'integer'
+/* Declaring RGB PINS */
+#define RGB_RedPin 3
+#define RGB_GreenPin 5
+#define RGB_BluePin 6
+
+/* Declaring Servo and Speaker PINS */
 #define servoPin 'integer'
 #define speakerPin 'integer'
 
+/************
+  FUNCTIONS
+*************/
+
+/* This function takes 3 parameters that decide the RGB values*/
+void rgbVal(int R, int G, int B)
+{
+  analogWrite(RGB_RedPin, R);
+  analogWrite(RGB_GreenPin, G);
+  analogWrite(RGB_BluePin, B);
+}
+
+void swivel(Servo* myservo,int min_pos, int max_pos,int wait_time)
+{
+  myservo->write(min_pos);
+  delay(wait_time);
+  myservo->write(max_pos);
+  delay(wait_time);
+}
 
 
 int state = 0; //variable to hold the state of the serial
@@ -11,12 +35,7 @@ int state = 0; //variable to hold the state of the serial
 Servo myservo;
 
 // swivel the servo n times between min_pos and max_pos, with wait_time delay(>=15),n times
-void swivel(Servo* myservo,int min_pos, int max_pos,int wait_time){
-  myservo->write(min_pos);
-  delay(wait_time);
-  myservo->write(max_pos);
-  delay(wait_time);
-}
+
 
 void setup() {
   // set pinMode of LEDs
