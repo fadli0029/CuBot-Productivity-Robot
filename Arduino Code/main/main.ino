@@ -21,6 +21,7 @@ void rgbVal(int R, int G, int B)
   analogWrite(RGB_BluePin, B);
 }
 
+/* swivel the servo n times between min_pos and max_pos, with wait_time delay(>=15),n times */
 void swivel(Servo* myservo,int min_pos, int max_pos,int wait_time)
 {
   myservo->write(min_pos);
@@ -34,7 +35,7 @@ int state = 0; //variable to hold the state of the serial
 
 Servo myservo;
 
-// swivel the servo n times between min_pos and max_pos, with wait_time delay(>=15),n times
+
 
 
 void setup() {
