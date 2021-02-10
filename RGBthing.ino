@@ -70,6 +70,6 @@ void setup()
 
 void loop() 
 {
-  servoRotation(CubotServo);
+  servoRotation();
   delay(2000);
 }
