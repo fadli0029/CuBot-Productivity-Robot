@@ -25,14 +25,16 @@ void setup() {
 
 void loop() {
 
-  if(Serial.available() > 0){ // Checks whether data is comming from the serial port
+  if(Serial.available() > 0)
+  { // Checks whether data is comming from the serial port
     state = Serial.read(); // Reads the data from the serial port
- }
+  }
 
-  doLedThing(state); 
+  doLedThing(state);
+  
   doSpeakerThing(state);
   doMotorThing(state);
-
+  
   // how long should we delay before the robot changes its state?
   delay('time to delay');
 }
