@@ -10,6 +10,14 @@ int state = 0; //variable to hold the state of the serial
 
 Servo myservo;
 
+// swivel the servo n times between min_pos and max_pos, with wait_time delay(>=15),n times
+void swivel(Servo* myservo,int min_pos, int max_pos,int wait_time){
+  myservo->write(min_pos);
+  delay(wait_time);
+  myservo->write(max_pos);
+  delay(wait_time);
+}
+
 void setup() {
   // set pinMode of LEDs
   pinMode(ledPin, OUTPUT);
