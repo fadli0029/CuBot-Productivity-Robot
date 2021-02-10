@@ -1,3 +1,5 @@
+#include <Servo.h>
+
 #define ledPin 'integer'
 #define servoPin 'integer'
 #define speakerPin 'integer'
@@ -6,7 +8,7 @@
 
 int state = 0; //variable to hold the state of the serial
 
-Servo myservo
+Servo myservo;
 
 void setup() {
   // set pinMode of LEDs
