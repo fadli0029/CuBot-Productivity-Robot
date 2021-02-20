@@ -1,5 +1,3 @@
-#define ledPin 7
-
 /* Defining mood for CuBot */
 #define sadMood 0
 #define happyMoodV1 1
