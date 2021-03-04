@@ -57,7 +57,7 @@ void botResponse() {
  {
     servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
-    R2_D2_talking_to_himeself();             
+    R2_D2_alarm_beep();             
     delay(15);  // waits 15ms for the servo to reach the position 
     
     state = 0; // re-initialize state to 0, then read the bluetooth signal again
@@ -76,7 +76,7 @@ void botResponse() {
  {
     servoInit(180, 0, 270); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
-    R2_D2_talking_to_himeself();             
+    R2_D2_beep();             
     delay(15);  // waits 15ms for the servo to reach the position 
     
     state = 0; // re-initialize state to 0, then read the bluetooth signal again
