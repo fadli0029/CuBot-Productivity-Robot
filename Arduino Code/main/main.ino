@@ -1,4 +1,10 @@
-#include <Servo.h>
+#include "ServoEasing.h"
+
+#define sadMood 1
+#define happyMoodV1 2
+#define happyMoodV2 3
+#define happyMoodV3 4
+#define stayStill 0
 
 /* Declaring RGB PINS */
 #define RGB_RedPin 3
@@ -6,12 +12,23 @@
 #define RGB_BluePin 6
 
 /* Declaring Servo and Speaker PINS */
-#define servoPin 'integer'
-#define tonePin 'integer'
+#define servoPin 9
+#define tonePin 7
+
+/*Global Variables*/
+ServoEasing CubotServo;
+int pos = 0;
+int state = 0;
 
 /************
   FUNCTIONS
 *************/
+
+void servoInit(int rotation, int returnPos, int speed_dps)
+{
+  CubotServo.easeTo(rotation, speed_dps);
+  CubotServo.easeTo(returnPos, speed_dps);  
+}
 
 /* This function takes 3 parameters that decide the RGB values*/
 void rgbVal(int R, int G, int B)
@@ -21,17 +38,69 @@ void rgbVal(int R, int G, int B)
   analogWrite(RGB_BluePin, B);
 }
 
-/* swivel the servo n times between min_pos and max_pos, with wait_time delay(>=15),n times */
-void swivel(Servo* myservo,int min_pos, int max_pos,int wait_time)
+int rgbColRand()
 {
-  myservo->write(min_pos);
-  delay(wait_time);
-  myservo->write(max_pos);
-  delay(wait_time);
+  int x = random(0, 266);
+  return x;
+}
+
+void botResponse() {
+
+  if(Serial.available() > 0)
+  { // Checks whether data is comming from the serial port
+    state = Serial.read(); // Reads the data from the serial port
+  }
+
+  CubotServo.write(0);
+ 
+ if (state == sadMood || state == 5 || state == 6 || state == 7 || state == 8 || state == 9 || state == 10) 
+ {
+    servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
+    R2_D2_talking_to_himeself();             
+    delay(15);  // waits 15ms for the servo to reach the position 
+    
+    state = 0; // re-initialize state to 0, then read the bluetooth signal again
+ }
+ else if (state == happyMoodV1) 
+ {
+    servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
+    R2_D2_talking_to_himeself();             
+    delay(15);  // waits 15ms for the servo to reach the position 
+    
+    state = 0; // re-initialize state to 0, then read the bluetooth signal again
+ } 
+ 
+ else if (state == happyMoodV2) 
+ {
+    servoInit(180, 0, 270); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
+    R2_D2_talking_to_himeself();             
+    delay(15);  // waits 15ms for the servo to reach the position 
+    
+    state = 0; // re-initialize state to 0, then read the bluetooth signal again
+ } 
+ 
+ else if (state == happyMoodV3) 
+ {
+    servoInit(180, 0, 270); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
+    R2_D2_talking_to_himeself();             
+    delay(15);  // waits 15ms for the servo to reach the position 
+    
+    state = 0; // re-initialize state to 0, then read the bluetooth signal again
+ }
+ 
+ else if (state == stayStill) 
+ {
+    // This is the state of CuBot most of the time, coz we don't want to annoy user lol
+    rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
+    state = 0; // re-initialize state to 0, then read the bluetooth signal again
+ } 
 }
 
 
-int state = 0; //variable to hold the state of the serial
 
 Servo myservo;
 
@@ -430,11 +499,14 @@ void R2_D2_talking_to_himeself() {  //Plays sounds like R2D2
 
 void setup() {
   // set pinMode of LEDs
-  pinMode(ledPin, OUTPUT);
-  digitialWrite(ledPin, LOW);
+  pinMode(RGB_RedPin, OUTPUT);
+  pinMode(RGB_GreenPin, OUTPUT);
+  pinMode(RGB_BluePin, OUTPUT);
+
+  randomSeed(analogRead(0));
 
   // attach servo
-  myservo.attach(servoPin)
+  CubotServo.attach(servoPin);
 
   // start recieving bluetooth communication
   Serial.begin(9600);
@@ -443,16 +515,13 @@ void setup() {
 
 void loop() {
 
-  if(Serial.available() > 0)
-  { // Checks whether data is comming from the serial port
-    state = Serial.read(); // Reads the data from the serial port
-  }
+//  if(Serial.available() > 0)
+//  { // Checks whether data is comming from the serial port
+//    state = Serial.read(); // Reads the data from the serial port
+//  }
 
-  doLedThing(state);
+  botResponse();
+
+  delay(2000);
   
-  doSpeakerThing(state);
-  doMotorThing(state);
-  
-  // how long should we delay before the robot changes its state?
-  delay('time to delay');
 }
