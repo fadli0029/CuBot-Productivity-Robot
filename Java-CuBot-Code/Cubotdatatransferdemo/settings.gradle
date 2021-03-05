@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "Cubot data transfer demo"
