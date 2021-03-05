@@ -53,9 +53,9 @@ void botResponse() {
 
   CubotServo.write(0);
  
- if (state == sadMood || state == 5 || state == 6 || state == 7 || state == 8 || state == 9 || state == 10) 
+ if (state == sadMood) 
  {
-    servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    servoInit(110, 80, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
     R2_D2_alarm_beep();             
     delay(15);  // waits 15ms for the servo to reach the position 
@@ -64,7 +64,7 @@ void botResponse() {
  }
  else if (state == happyMoodV1) 
  {
-    servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    servoInit(130, 50, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
     R2_D2_talking_to_himeself();             
     delay(15);  // waits 15ms for the servo to reach the position 
@@ -74,7 +74,7 @@ void botResponse() {
  
  else if (state == happyMoodV2) 
  {
-    servoInit(180, 0, 270); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    servoInit(150, 30, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
     R2_D2_beep();             
     delay(15);  // waits 15ms for the servo to reach the position 
@@ -84,7 +84,7 @@ void botResponse() {
  
  else if (state == happyMoodV3) 
  {
-    servoInit(180, 0, 270); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
+    servoInit(180, 0, 360); // tells the servo to rotate 180, return to 0, in the speed of 360 degree per second
     rgbVal(rgbColRand(), rgbColRand(), rgbColRand());
     R2_D2_talking_to_himeself();             
     delay(15);  // waits 15ms for the servo to reach the position 
@@ -520,6 +520,8 @@ void loop() {
 //    state = Serial.read(); // Reads the data from the serial port
 //  }
 
+  state = 2;
+  
   botResponse();
 
   delay(2000);
