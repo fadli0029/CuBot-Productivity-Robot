@@ -14,6 +14,8 @@ Electronics
 7. Bluetooth Module HC-05
 
 **This project was also part of the UC San Diego IEEE Quarterly Project Competition, where participants worked with students from different majors of the STEM industry.**
+**Navigate to the documentation pdf file if you're interested in reading through the whole idea of the project and its purpose**
 
-***HOW-TO-USE***
+
+***HOW-TO-USE:***
 If you have all the electronics component and have put them together, upload the arduino code to the arduino. Then download the source code for the java app, run it from your phone using arduino studio, and then connect your phone to the Bluetooth of the CuBot.
