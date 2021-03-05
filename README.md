@@ -13,10 +13,6 @@ Electronics
 6. Breadboards (as much as you like)
 7. Bluetooth Module HC-05
 
-Software:
-1. Arduino IDE
-2. LiquidCrystal_PCF8574.h
-
 **This project was also part of the UC San Diego IEEE Quarterly Project Competition, where participants worked with students from different majors of the STEM industry.**
 
 ***HOW-TO-USE***
