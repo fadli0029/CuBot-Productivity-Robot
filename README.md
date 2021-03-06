@@ -6,11 +6,11 @@ The electronic components are as follows:
 
 Electronics
 1. Arduino MEGA board (1)
-2. Jumper Wires (> = 7)
+2. Jumper Wires (> 20)
 3. Speaker (1)
 4. Servor motor - 20kg (1)
-5. RGB's (a lot of them)
-6. Breadboards (as much as you like)
+5. RGB's 
+6. Breadboards 
 7. Bluetooth Module HC-05
 
 **This project was also part of the UC San Diego IEEE Quarterly Project Competition, where participants worked with students from different majors of the STEM industry.**
